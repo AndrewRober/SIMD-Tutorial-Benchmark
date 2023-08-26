@@ -20,9 +20,11 @@ public static class SystemSpecs
         long totalMemory = GC.GetTotalMemory(false);
 
         // Get CPU info
+#pragma warning disable CA1416 // Validate platform compatibility
         var cpu = new ManagementObjectSearcher("select * from Win32_Processor").Get().OfType<ManagementObject>().FirstOrDefault();
-        string cpuName = cpu?["Name"].ToString();
-        string cpuCurrentClockSpeed = cpu?["CurrentClockSpeed"].ToString();
+        var cpuName = cpu?["Name"].ToString();
+        var cpuCurrentClockSpeed = cpu?["CurrentClockSpeed"].ToString();
+#pragma warning restore CA1416 // Validate platform compatibility
 
         // Print machine info
         Console.WriteLine($"Machine Name: {machineName}");

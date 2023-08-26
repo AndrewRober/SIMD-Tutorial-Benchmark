@@ -68,7 +68,7 @@ namespace SIMDTutorial
             Console.WriteLine(new string('-', 72));
             Console.WriteLine($"| {"Type".Center(10)} | {"Operation".Center(10)} | {"Vector Size".Center(12)} | {"Traditional".Center(12)} | {"SIMD".Center(12)} |");
             Console.WriteLine(new string('-', 72));
-            string previousTypeName = null;
+            string? previousTypeName = null;
             foreach (var testCase in testCases)
             {
                 var vectorSize = (int)(typeof(Vector<>).MakeGenericType(testCase.Type).GetProperty("Count")?.GetValue(null) ?? throw new InvalidOperationException());
